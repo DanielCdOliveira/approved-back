@@ -16,14 +16,3 @@ export async function insertUserDb(user: CreateUserData) {
 export async function getUserByEmail(email: string) {
   return prisma.user.findFirst({ where: { email } })
 }
-export async function createSession(userId) {
-  //   return connection.query(
-  //     `
-  // INSERT INTO sessions
-  // ("userId") 
-  // VALUES ($1)
-  // RETURNING id
-  // `,
-  //     [userId]
-  //   );
-}

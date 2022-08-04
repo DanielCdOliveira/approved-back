@@ -13,6 +13,6 @@ export async function signUp(req: Request, res: Response) {
 
 export async function signIn(req, res) {
     const user = req.body
-    const data =  await userServices.loginUser(user)
+    const data = await userServices.loginUser(user)
     res.status(200).send(data)
 }
