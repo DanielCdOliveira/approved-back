@@ -30,6 +30,7 @@ model Folder {
   user    User      @relation(fields: [userId], references: [id])
   Subject Subject[]
 
+  @@unique([name, userId])
   @@map("folders")
 }
 
