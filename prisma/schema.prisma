@@ -38,10 +38,11 @@ model Subject {
   id       Int     @id @default(autoincrement())
   name     String
   folderId Int
-  isDone   Boolean @default(false)
+  isDone   Boolean 
   folder   Folder  @relation(fields: [folderId], references: [id])
   Topic    Topic[]
 
+  @@unique([name, folderId])
   @@map("subjects")
 }
 
@@ -54,6 +55,7 @@ model Topic {
   Review    Review[]
   Study     Study[]
 
+  @@unique([name, subjectId])
   @@map("topics")
 }
 
