@@ -20,6 +20,7 @@ model User {
   Review    Review[]
   Study     Study[]
   Subject   Subject[]
+  Topic     Topic[]
 
   @@map("users")
 }
@@ -45,7 +46,7 @@ model Subject {
   user     User    @relation(fields: [userId], references: [id])
   Topic    Topic[]
 
-  @@unique([name, folderId])
+  @@unique([name, folderId, userId])
   @@map("subjects")
 }
 
@@ -53,12 +54,14 @@ model Topic {
   id        Int      @id @default(autoincrement())
   name      String
   subjectId Int
+  userId    Int
   isDone    Boolean  @default(false)
   subject   Subject  @relation(fields: [subjectId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
   Review    Review[]
   Study     Study[]
 
-  @@unique([name, subjectId])
+  @@unique([name, subjectId, userId])
   @@map("topics")
 }
 
