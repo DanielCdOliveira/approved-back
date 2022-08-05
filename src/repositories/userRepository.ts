@@ -1,3 +1,4 @@
+import { number } from "joi";
 import { prisma } from "../config/database.js";
 import { CreateUserData } from "../interfaces/interfaces.js"
 
@@ -15,4 +16,7 @@ export async function insertUserDb(user: CreateUserData) {
 }
 export async function getUserByEmail(email: string) {
   return prisma.user.findFirst({ where: { email } })
+}
+export async function getUserById(id: number) {
+  return prisma.user.findFirst({ where: { id } })
 }

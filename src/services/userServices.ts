@@ -25,3 +25,16 @@ export async function loginUser(userLogin: LoginUserData) {
 async function getUserByEmail(email: string) {
     return userRepository.getUserByEmail(email)
 }
+
+export async function checkToken(authorization: string) {
+    const token = authorization?.replace("Bearer ", "").trim();
+    const data :any = jwt.verify(token, JWT_KEY);
+    const {id} = await userRepository.getUserById(data.userId)
+    if (!id || !token){
+        throw{
+            type: "unauthorized",
+            message: "invalid token"
+        }
+    }
+    return id
+}
