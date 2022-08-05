@@ -1,13 +1,17 @@
 import { CreateStudyData } from "../interfaces/interfaces.js"
+import dayjs from "dayjs"
 import * as studyRepository from "../repositories/studyRepository.js"
+import * as topicRepository from "../repositories/topicRepository.js"
 
-export async function insertStudyDb(newFolder: CreateStudyData) {
-    await studyRepository.insertStudyDb(newFolder)
+export async function insertStudyDb(newStudy: CreateStudyData) {
+    await studyRepository.insertStudyDb(newStudy)
 }
-// export async function getAllFolders(userId : number){
-//     const result =  await studyRepository.getAllFolders(userId)
-//     return result
-// }
-// export async function getFolderById(id: number) {
-//     return studyRepository.getFolderById(id)
-// }
+export async function compareUserTopic(userId: number, topicId: number) {
+    const topic = await topicRepository.getTopicById(topicId)
+    if (topic.userId !== userId) {
+        throw {
+            type: "not_found",
+            message: "topic does not belong to the user"
+        }
+    }
+}

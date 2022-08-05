@@ -81,7 +81,7 @@ model Study {
   id      Int      @id @default(autoincrement())
   userId  Int
   topicId Int
-  date    DateTime
+  date    String
   time    Int
   user    User     @relation(fields: [userId], references: [id])
   topic   Topic    @relation(fields: [topicId], references: [id])
