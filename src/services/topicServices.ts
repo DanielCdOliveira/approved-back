@@ -14,3 +14,6 @@ export async function compareUserTopic(userId: number, subjectId: number) {
         }
     }
 }
+export async function getTopicById(id: number) {
+    return await topicRepository.getTopicById(id)
+}

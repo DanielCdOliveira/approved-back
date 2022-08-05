@@ -13,16 +13,3 @@ export async function insertStudyDb(newStudy: CreateStudyData) {
     }
   }
 }
-// export async function getAllFolders(userId: number) {
-//   return prisma.folder.findMany({ where: { userId },include:{Subject:{include:{Topic:{}}}} })
-// }
-// export async function getFolderById(id: number) {
-//   const folder = await prisma.folder.findFirst({ where: { id } })
-//   if (!folder) {
-//     throw {
-//       type: "not_found",
-//       message: "folder not found"
-//     }
-//   }
-//   return folder
-// }

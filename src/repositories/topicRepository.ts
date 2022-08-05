@@ -14,3 +14,13 @@ export async function insertSubjectDb(newTopic: CreateTopicData) {
         }
     }
 }
+export async function getTopicById(id: number) {
+    const subject = await prisma.topic.findFirst({ where: { id } })
+    if (!subject) {
+      throw {
+        type: "not_found",
+        message: "topic not found"
+      }
+    }
+    return subject
+  }
