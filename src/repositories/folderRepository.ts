@@ -13,3 +13,6 @@ export async function insertFolderDb(newFolder: CreateFolderData) {
     }
   }
 }
+export async function getAllFolders(userId:number) {
+  return prisma.folder.findMany()
+}
