@@ -14,7 +14,7 @@ export async function insertFolderDb(newFolder: CreateFolderData) {
   }
 }
 export async function getAllFolders(userId: number) {
-  return prisma.folder.findMany({ where: { userId },include:{Subject:{include:{Topic:{}}}} })
+  return prisma.folder.findMany({ where: { userId },include:{subjects:{include:{topics:{}}}} })
 }
 export async function getFolderById(id: number) {
   const folder = await prisma.folder.findFirst({ where: { id } })

@@ -18,9 +18,9 @@ model User {
   createdAt DateTime  @default(now())
   Folder    Folder[]
   Review    Review[]
-  Study     Study[]
-  Subject   Subject[]
-  Topic     Topic[]
+  studies     Study[]
+  subjects   Subject[]
+  topics     Topic[]
 
   @@map("users")
 }
@@ -30,7 +30,7 @@ model Folder {
   name    String
   userId  Int
   user    User      @relation(fields: [userId], references: [id])
-  Subject Subject[]
+  subjects Subject[]
 
   @@unique([name, userId])
   @@map("folders")
@@ -44,7 +44,7 @@ model Subject {
   isDone   Boolean
   folder   Folder  @relation(fields: [folderId], references: [id])
   user     User    @relation(fields: [userId], references: [id])
-  Topic    Topic[]
+  topics    Topic[]
 
   @@unique([name, folderId, userId])
   @@map("subjects")
@@ -58,8 +58,8 @@ model Topic {
   isDone    Boolean  @default(false)
   subject   Subject  @relation(fields: [subjectId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
-  Review    Review[]
-  Study     Study[]
+  reviews    Review[]
+  studies     Study[]
 
   @@unique([name, subjectId, userId])
   @@map("topics")
