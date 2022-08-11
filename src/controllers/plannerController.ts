@@ -14,3 +14,11 @@ await compareUserTopic(userId, topicId)
 await plannerServices.createPlannerDb({...req.body,userId})
 res.sendStatus(201)
 }
+export async function getAllPlannersOfFolder(req: Request, res: Response){
+    const {userId} = res.locals
+    const folderId = parseInt(req.params.folderId)
+    console.log(userId, folderId);
+    
+    const planner = await plannerServices.getAllPlannersOfFolder(userId, folderId)
+    res.status(200).send(planner)
+    }
