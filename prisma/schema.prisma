@@ -18,18 +18,18 @@ model User {
   createdAt DateTime  @default(now())
   Folder    Folder[]
   Review    Review[]
-  studies     Study[]
-  subjects   Subject[]
-  topics     Topic[]
+  studies   Study[]
+  subjects  Subject[]
+  topics    Topic[]
 
   @@map("users")
 }
 
 model Folder {
-  id      Int       @id @default(autoincrement())
-  name    String
-  userId  Int
-  user    User      @relation(fields: [userId], references: [id])
+  id       Int       @id @default(autoincrement())
+  name     String
+  userId   Int
+  user     User      @relation(fields: [userId], references: [id])
   subjects Subject[]
 
   @@unique([name, userId])
@@ -44,7 +44,7 @@ model Subject {
   isDone   Boolean
   folder   Folder  @relation(fields: [folderId], references: [id])
   user     User    @relation(fields: [userId], references: [id])
-  topics    Topic[]
+  topics   Topic[]
 
   @@unique([name, folderId, userId])
   @@map("subjects")
@@ -58,8 +58,8 @@ model Topic {
   isDone    Boolean  @default(false)
   subject   Subject  @relation(fields: [subjectId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
-  reviews    Review[]
-  studies     Study[]
+  reviews   Review[]
+  studies   Study[]
 
   @@unique([name, subjectId, userId])
   @@map("topics")
@@ -78,13 +78,13 @@ model Review {
 }
 
 model Study {
-  id      Int      @id @default(autoincrement())
+  id      Int    @id @default(autoincrement())
   userId  Int
   topicId Int
   date    String
   time    Int
-  user    User     @relation(fields: [userId], references: [id])
-  topic   Topic    @relation(fields: [topicId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
+  topic   Topic  @relation(fields: [topicId], references: [id])
 
   @@map("studies")
 }
