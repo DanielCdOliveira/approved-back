@@ -21,6 +21,7 @@ model User {
   studies   Study[]
   subjects  Subject[]
   topics    Topic[]
+  planner   Planner[]
 
   @@map("users")
 }
@@ -31,35 +32,38 @@ model Folder {
   userId   Int
   user     User      @relation(fields: [userId], references: [id])
   subjects Subject[]
+  planner  Planner[]
 
   @@unique([name, userId])
   @@map("folders")
 }
 
 model Subject {
-  id       Int     @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   name     String
   folderId Int
   userId   Int
   isDone   Boolean
-  folder   Folder  @relation(fields: [folderId], references: [id])
-  user     User    @relation(fields: [userId], references: [id])
+  folder   Folder    @relation(fields: [folderId], references: [id])
+  user     User      @relation(fields: [userId], references: [id])
   topics   Topic[]
+  planner  Planner[]
 
   @@unique([name, folderId, userId])
   @@map("subjects")
 }
 
 model Topic {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String
   subjectId Int
   userId    Int
-  isDone    Boolean  @default(false)
-  subject   Subject  @relation(fields: [subjectId], references: [id])
-  user      User     @relation(fields: [userId], references: [id])
+  isDone    Boolean   @default(false)
+  subject   Subject   @relation(fields: [subjectId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
   reviews   Review[]
   studies   Study[]
+  planner   Planner[]
 
   @@unique([name, subjectId, userId])
   @@map("topics")
@@ -87,4 +91,20 @@ model Study {
   topic   Topic  @relation(fields: [topicId], references: [id])
 
   @@map("studies")
+}
+
+model Planner {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  folderId  Int
+  subjectId Int
+  topicId   Int
+  weekDay   Int
+  user      User    @relation(fields: [userId], references: [id])
+  folder    Folder  @relation(fields: [folderId], references: [id])
+  subject   Subject @relation(fields: [subjectId], references: [id])
+  topic     Topic   @relation(fields: [topicId], references: [id])
+
+  @@unique([folderId,subjectId,topicId,userId,weekDay])
+  @@map("planners")
 }

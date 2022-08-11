@@ -5,7 +5,7 @@ import * as subjectServices from "../services/subjectServices.js"
 export async function insertSubjectDb(newTopic: CreateTopicData) {
     await topicRepository.insertSubjectDb(newTopic)
 }
-export async function compareUserTopic(userId: number, subjectId: number) {
+export async function compareUserSubject(userId: number, subjectId: number) {
     const subject = await subjectServices.getSubjectById(subjectId)
     if (subject.userId !== userId) {
         throw {
