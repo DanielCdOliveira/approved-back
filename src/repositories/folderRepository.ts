@@ -17,7 +17,7 @@ export async function getAllFolders(userId: number) {
   return prisma.folder.findMany({ where: { userId },include:{subjects:{include:{topics:{}}}} })
 }
 export async function getFolderById(id: number) {
-  const folder = await prisma.folder.findFirst({ where: { id } })
+  const folder = await prisma.folder.findFirst({ where: { id },include:{subjects:{include:{topics:{}}}} })
   if (!folder) {
     throw {
       type: "not_found",
