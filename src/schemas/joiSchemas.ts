@@ -25,8 +25,9 @@ export const topicSchema = joi.object({
     isDone: joi.boolean().required()
 })
 export const studySchema = joi.object({
+    folderId:joi.number().integer().min(1).required(),
+    subjectId:joi.number().integer().min(1).required(),
     topicId:joi.number().integer().min(1).required(),
-    time: joi.number().integer().min(1).required()
 })
 export const plannerSchema = joi.object({
     folderId:joi.number().integer().min(1).required(),

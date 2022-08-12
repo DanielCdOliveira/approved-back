@@ -33,6 +33,7 @@ model Folder {
   user     User      @relation(fields: [userId], references: [id])
   subjects Subject[]
   planner  Planner[]
+  Study    Study[]
 
   @@unique([name, userId])
   @@map("folders")
@@ -48,6 +49,7 @@ model Subject {
   user     User      @relation(fields: [userId], references: [id])
   topics   Topic[]
   planner  Planner[]
+  Study    Study[]
 
   @@unique([name, folderId, userId])
   @@map("subjects")
@@ -82,13 +84,16 @@ model Review {
 }
 
 model Study {
-  id      Int    @id @default(autoincrement())
-  userId  Int
-  topicId Int
-  date    String
-  time    Int
-  user    User   @relation(fields: [userId], references: [id])
-  topic   Topic  @relation(fields: [topicId], references: [id])
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  folderId  Int
+  subjectId Int
+  topicId   Int
+  date      String
+  user      User    @relation(fields: [userId], references: [id])
+  folder    Folder  @relation(fields: [folderId], references: [id])
+  subject   Subject @relation(fields: [subjectId], references: [id])
+  topic     Topic   @relation(fields: [topicId], references: [id])
 
   @@map("studies")
 }
@@ -105,6 +110,6 @@ model Planner {
   subject   Subject @relation(fields: [subjectId], references: [id])
   topic     Topic   @relation(fields: [topicId], references: [id])
 
-  @@unique([folderId,subjectId,topicId,userId,weekDay])
+  @@unique([folderId, subjectId, topicId, userId, weekDay])
   @@map("planners")
 }

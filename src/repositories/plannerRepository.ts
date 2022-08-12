@@ -36,3 +36,24 @@ export async function getAllPlannersofFolderDb(userId: number, folderId: number)
     })
     return planner
 }
+export async function getAllPlannersofUserDb(userId: number) {
+    const planner  = await prisma.planner.findMany({
+        where: { userId },
+        select:{
+            id:true,
+            weekDay:true,
+            folder:{select:{name:true}},
+            subject: { select: { name: true }},
+            topic: { select: { name: true } },
+        }
+    }) as any
+    planner.map(item => {
+        item.folderName = item.folder.name; 
+        item.subjectName = item.subject.name; 
+        item.topicName = item.topic.name; 
+        delete item.folder;
+        delete item.subject;
+        delete item.topic;
+    })
+    return planner
+}

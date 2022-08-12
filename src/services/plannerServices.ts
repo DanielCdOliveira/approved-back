@@ -7,3 +7,6 @@ export async function createPlannerDb(newPlanner: CreatePlannerData) {
 export async function getAllPlannersOfFolder(userId : number, folderId: number) {
    return await plannerRepository.getAllPlannersofFolderDb(userId, folderId)
 }
+export async function getAllPlannersOfUser(userId : number,) {
+    return await plannerRepository.getAllPlannersofUserDb(userId)
+ }

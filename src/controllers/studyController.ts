@@ -2,12 +2,17 @@ import { Request, Response } from "express";
 
 import * as studyServices from "../services/studyServices.js"
 import {createDate} from "../utils/utils.js"
+import { compareUserFolder } from "../services/folderServices.js";
+import { compareUserSubject } from "../services/topicServices.js";
+import { compareUserTopic } from "../services/topicServices.js";
 
 export async function createStudy(req: Request, res: Response) {
-    const { topicId, time } = req.body
+    const { folderId, subjectId, topicId } = req.body
     const userId = res.locals.userId;
     const date = createDate()
-    await studyServices.compareUserTopic(userId,topicId)    
-    await studyServices.insertStudyDb({topicId, userId, time, date})
+    await compareUserFolder(userId, folderId)
+    await compareUserSubject(userId, subjectId)
+    await compareUserTopic(userId, topicId)
+    await studyServices.insertStudyDb({folderId, subjectId,topicId, userId, date})
     res.sendStatus(201)
 }

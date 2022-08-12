@@ -17,3 +17,12 @@ export async function compareUserSubject(userId: number, subjectId: number) {
 export async function getTopicById(id: number) {
     return await topicRepository.getTopicById(id)
 }
+export async function compareUserTopic(userId: number, topicId: number) {
+    const topic = await topicRepository.getTopicById(topicId)
+    if (topic.userId !== userId) {
+        throw {
+            type: "not_found",
+            message: "topic does not belong to the user"
+        }
+    }
+}
