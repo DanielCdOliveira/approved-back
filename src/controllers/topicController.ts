@@ -8,3 +8,10 @@ export async function createTopic(req: Request, res: Response) {
     await topicServices.insertSubjectDb({ name, subjectId, isDone, userId })
     res.sendStatus(201)
 }
+export async function completeTopic(req: Request, res: Response) {    
+    const userId = res.locals.userId
+    const topicId = parseInt(req.params.id)
+    await topicServices.compareUserTopic(userId, topicId)
+    await topicServices.completeTopic(topicId)
+    res.sendStatus(200)
+}

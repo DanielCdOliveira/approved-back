@@ -26,3 +26,6 @@ export async function compareUserTopic(userId: number, topicId: number) {
         }
     }
 }
+export async function completeTopic(topicId : number) {
+    await topicRepository.completeTopic(topicId)
+}

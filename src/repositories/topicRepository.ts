@@ -24,3 +24,13 @@ export async function getTopicById(id: number) {
     }
     return subject
   }
+  export async function completeTopic(topicId: number) {
+    await prisma.topic.update({
+        where: {
+          id: topicId,
+        },
+        data: {
+          isDone: true,
+        },
+      })
+  }
