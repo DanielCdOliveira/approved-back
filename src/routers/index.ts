@@ -5,6 +5,7 @@ import subjectRouter from './subjectRouter.js';
 import topicRouter from './topicRouter.js';
 import studyRouter from './studyRouter.js';
 import plannerRouter from './plannerRouter.js';
+import reviewRouter from './reviewRouter.js';
 const router = Router();
 
 router.use(userRouter)
@@ -13,6 +14,7 @@ router.use(subjectRouter)
 router.use(topicRouter)
 router.use(studyRouter)
 router.use(plannerRouter)
+router.use(reviewRouter)
 
 
 export default router;

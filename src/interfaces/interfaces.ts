@@ -6,3 +6,4 @@ export type CreateSubjectData = Omit<Subject,"id">
 export type CreateTopicData = Omit<Topic,"id">
 export type CreateStudyData = Omit<Study,"id">
 export type CreatePlannerData = Omit<Planner,"id">
+export type CreateReviewData = Omit<Review,"id"|"doneDate">

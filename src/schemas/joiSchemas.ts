@@ -35,3 +35,9 @@ export const plannerSchema = joi.object({
     topicId:joi.number().integer().min(1).required(),
     weekDay:joi.number().integer().required(),
 })
+export const reviewSchema = joi.object({
+    folderId:joi.number().integer().min(1).required(),
+    subjectId:joi.number().integer().min(1).required(),
+    topicId:joi.number().integer().min(1).required(),
+    date:joi.string().required(),
+})
