@@ -16,3 +16,9 @@ export async function createStudy(req: Request, res: Response) {
     await studyServices.insertStudyDb({folderId, subjectId,topicId, userId, date})
     res.sendStatus(201)
 }
+export async function getAllStudiesFromFolder(req: Request, res: Response) {
+    const {userId} = res.locals
+    const folderId = parseInt(req.params.id)
+    const historic = await studyServices.getAllStudies(userId, folderId)
+    res.status(200).send(historic)
+}

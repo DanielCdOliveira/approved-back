@@ -6,3 +6,6 @@ import * as topicRepository from "../repositories/topicRepository.js"
 export async function insertStudyDb(newStudy: CreateStudyData) {
     await studyRepository.insertStudyDb(newStudy)
 }
+export async function getAllStudies(userId: number, folderId: number) {
+    return await studyRepository.getAllStudies(userId, folderId)
+}
