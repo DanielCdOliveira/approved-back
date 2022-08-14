@@ -14,3 +14,8 @@ export async function createReview(req: Request, res: Response) {
     await reviewServices.insertReviewDb({ folderId, subjectId,topicId, userId, date })
     res.sendStatus(201)
 }
+export async function getAllReviewsFromUser(req: Request, res: Response) {
+    const {userId} = res.locals
+    const reviews = await reviewServices.getAllReviews(userId)
+    res.status(200).send(reviews)
+}
