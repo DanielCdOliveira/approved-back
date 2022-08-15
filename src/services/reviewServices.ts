@@ -13,3 +13,6 @@ export async function deleteReviewByFolderId(folderId:number) {
 export async function deleteReviewBySubjectId(subjectId:number) {
     await reviewRepository.deleteReviewBySubjectId(subjectId)
 }
+export async function deleteReviewByTopicId(topicId:number) {
+    await reviewRepository.deleteReviewBySubjectId(topicId)
+}

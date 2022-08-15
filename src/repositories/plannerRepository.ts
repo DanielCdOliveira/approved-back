@@ -63,3 +63,6 @@ export async function deletePlannerByFolderId(folderId: number) {
 export async function deletePlannerBySubjectId(subjectId: number) {
     await prisma.planner.deleteMany({ where: { subjectId } })
 }
+export async function deletePlannerByTopicId(topicId: number) {
+    await prisma.planner.deleteMany({ where: { topicId } })
+}

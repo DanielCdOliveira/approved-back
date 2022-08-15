@@ -15,3 +15,7 @@ export async function deleteStudyByFolderId(folderId:number) {
 export async function deleteStudyBySubjectId(subjectId:number) {
     await studyRepository.deleteStudyBySubjectId(subjectId)
 }
+export async function deleteStudyByTopicId(topicId:number) {
+    await studyRepository.deleteStudyBySubjectId(topicId)
+}
+

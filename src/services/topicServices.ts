@@ -35,3 +35,6 @@ export async function deleteTopicByFolderId(folderId:number) {
 export async function deleteTopicBySubjectId(subjectId:number) {
     await topicRepository.deleteTopicBySubjectId(subjectId)
 }
+export async function deleteTopicByTopicId(topicId:number) {
+    await topicRepository.deleteTopicByTopicId(topicId)
+}

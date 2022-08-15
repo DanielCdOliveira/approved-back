@@ -41,3 +41,6 @@ export async function deleteStudyByFolderId(folderId: number) {
 export async function deleteStudyBySubjectId(subjectId: number) {
   await prisma.study.deleteMany({ where: { subjectId } })
 }
+export async function deleteStudyByTopicId(topicId: number) {
+  await prisma.study.deleteMany({ where: { topicId } })
+}

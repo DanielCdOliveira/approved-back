@@ -16,3 +16,6 @@ export async function getAllPlannersOfUser(userId : number,) {
 export async function deletePlannerBySubjectId(subjectId:number) {
     await plannerRepository.deletePlannerBySubjectId(subjectId)
 }
+export async function deletePlannerByTopicId(topicId:number) {
+    await plannerRepository.deletePlannerByTopicId(topicId)
+}

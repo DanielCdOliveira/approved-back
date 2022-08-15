@@ -15,3 +15,10 @@ export async function completeTopic(req: Request, res: Response) {
     await topicServices.completeTopic(topicId)
     res.sendStatus(200)
 }
+export async function deleteTopic(req: Request, res: Response) {
+    const userId = res.locals.userId
+    const topicId = parseInt(req.params.id)
+    await topicServices.compareUserTopic(userId, topicId)
+    await topicServices.deleteTopicByTopicId(topicId)
+    res.sendStatus(204)
+}

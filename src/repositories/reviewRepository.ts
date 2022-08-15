@@ -37,4 +37,7 @@ export async function deleteReviewByFolderId(folderId: number) {
 export async function deleteReviewBySubjectId(subjectId: number) {
   await prisma.review.deleteMany({ where: { subjectId } })
 }
+export async function deleteReviewByTopicId(topicId: number) {
+  await prisma.review.deleteMany({ where: { topicId } })
+}
 

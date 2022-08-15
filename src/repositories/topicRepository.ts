@@ -34,6 +34,14 @@ export async function completeTopic(topicId: number) {
     },
   })
 }
+export async function deleteTopicByTopicId(subjectId: number) {
+  try {
+    await prisma.topic.delete({ where: { id: subjectId } })
+  } catch (error) {
+    console.log(error);
+
+  }
+}
 export async function deleteTopicByFolderId(folderId: number) {
   await prisma.topic.deleteMany({ where: { folderId } })
 }
