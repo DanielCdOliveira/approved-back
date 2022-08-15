@@ -19,3 +19,8 @@ export async function getAllReviewsFromUser(req: Request, res: Response) {
     const reviews = await reviewServices.getAllReviews(userId)
     res.status(200).send(reviews)
 }
+export async function deleteReview(req: Request, res: Response) {
+    const reviewId = parseInt(req.params.id)
+    await reviewServices.deleteReviewByReviewId(reviewId)
+    res.sendStatus(204)
+}

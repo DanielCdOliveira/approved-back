@@ -16,3 +16,6 @@ export async function deleteReviewBySubjectId(subjectId:number) {
 export async function deleteReviewByTopicId(topicId:number) {
     await reviewRepository.deleteReviewBySubjectId(topicId)
 }
+export async function deleteReviewByReviewId(reviewId : number) {
+    await reviewRepository.deleteREviewByReviewId(reviewId)
+}

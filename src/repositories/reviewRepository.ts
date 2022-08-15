@@ -31,6 +31,14 @@ export async function GetAllReviews(userId: number) {
   })
   return reviews
 }
+export async function deleteREviewByReviewId(reviewId: number) {
+  try {
+    await prisma.review.delete({ where: {id:reviewId } })
+  } catch (error) {
+    console.log(error);
+
+  }
+}
 export async function deleteReviewByFolderId(folderId: number) {
   await prisma.review.deleteMany({ where: { folderId } })
 }

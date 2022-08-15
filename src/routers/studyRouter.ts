@@ -9,4 +9,5 @@ const studyRouter = Router()
 studyRouter.post("/study",verifyToken,schemaVerifier(studySchema), createStudy)
 studyRouter.get("/study/:id", verifyToken, getAllStudiesFromFolder)
 studyRouter.delete("/study/:id", verifyToken, deleteStudy)
+
 export default studyRouter
