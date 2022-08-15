@@ -1,4 +1,4 @@
-import faker from "faker"
+import { faker } from "@faker-js/faker"
 import { prisma } from "../../src/config/database.js"
 import app from "../../src/app.js"
 import supertest from "supertest"
@@ -7,7 +7,7 @@ export async function generateUser() {
     return {
         email: faker.internet.email(),
         password: "1234567890",
-        name: faker.name.findName()
+        name: faker.name.fullName()
     }
 }
 
