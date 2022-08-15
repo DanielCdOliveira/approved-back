@@ -34,3 +34,6 @@ export async function getTopicById(id: number) {
         },
       })
   }
+export async function deleteTopicByFolderId(folderId: number) {
+    await prisma.topic.deleteMany({where:{folderId}})
+}

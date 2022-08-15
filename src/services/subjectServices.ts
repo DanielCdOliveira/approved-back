@@ -7,3 +7,6 @@ export async function insertSubjectDb(newSubject: CreateSubjectData) {
 export async function getSubjectById(id: number) {
     return await subjectRepository.getSubjectById(id)
 }
+export async function deleteSubjectByFolderId(folderId:number) {
+    await subjectRepository.deleteSubjectByFolderId(folderId)
+}

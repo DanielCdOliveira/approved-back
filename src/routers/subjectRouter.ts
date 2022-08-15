@@ -8,5 +8,6 @@ import { createSubject } from "../controllers/subjectController.js";
 const subjectRouter = Router()
 
 subjectRouter.post("/subject",verifyToken, schemaVerifier(subjectSchema),createSubject)
+subjectRouter.delete("subject/:id", verifyToken,)
 
 export default subjectRouter

@@ -20,3 +20,10 @@ export async function getFolderById(req: Request, res: Response) {
     const folder = await folderServices.compareUserFolder(userId,folderId)
     res.status(200).send(folder)
 }
+export async function deleteFolder(req: Request, res: Response) {
+    const userId = res.locals.userId
+    const folderId = parseInt(req.params.id)
+    await folderServices.compareUserFolder(userId, folderId)
+    await folderServices.deleteFolderDependencesByFolderId(folderId)
+    res.sendStatus(204)
+}

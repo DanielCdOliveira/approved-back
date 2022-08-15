@@ -22,6 +22,7 @@ export const subjectSchema = joi.object({
 export const topicSchema = joi.object({
     name: joi.string().min(1).required(),
     subjectId:joi.number().integer().min(1).required(),
+    folderId:joi.number().integer().min(1).required(),
     isDone: joi.boolean().required()
 })
 export const studySchema = joi.object({

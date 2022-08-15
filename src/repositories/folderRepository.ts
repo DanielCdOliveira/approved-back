@@ -26,3 +26,12 @@ export async function getFolderById(id: number) {
   }
   return folder
 }
+export async function deleteFolderByFolderId(folderId: number) {
+  try {
+      await prisma.folder.delete({where:{id:folderId}})
+  } catch (error) {
+    console.log(error);
+    
+  }
+
+}

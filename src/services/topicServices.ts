@@ -29,3 +29,6 @@ export async function compareUserTopic(userId: number, topicId: number) {
 export async function completeTopic(topicId : number) {
     await topicRepository.completeTopic(topicId)
 }
+export async function deleteTopicByFolderId(folderId:number) {
+    await topicRepository.deleteTopicByFolderId(folderId)
+}

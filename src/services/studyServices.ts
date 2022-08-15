@@ -9,3 +9,6 @@ export async function insertStudyDb(newStudy: CreateStudyData) {
 export async function getAllStudies(userId: number, folderId: number) {
     return await studyRepository.getAllStudies(userId, folderId)
 }
+export async function deleteStudyByFolderId(folderId:number) {
+    await studyRepository.deleteStudyByFolderId(folderId)
+}

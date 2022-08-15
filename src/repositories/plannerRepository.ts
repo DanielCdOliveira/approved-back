@@ -57,3 +57,6 @@ export async function getAllPlannersofUserDb(userId: number) {
     })
     return planner
 }
+export async function deletePlannerByFolderId(folderId: number) {
+    await prisma.planner.deleteMany({where:{folderId}})
+  }

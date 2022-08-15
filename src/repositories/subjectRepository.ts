@@ -24,3 +24,6 @@ export async function getSubjectById(id: number) {
   }
   return subject
 }
+export async function deleteSubjectByFolderId(folderId: number) {
+  await prisma.subject.deleteMany({where:{folderId}})
+}

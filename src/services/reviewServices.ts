@@ -7,3 +7,6 @@ export async function insertReviewDb(newReview: CreateReviewData) {
 export async function getAllReviews(userId: number) {
    return await reviewRepository.GetAllReviews(userId)
 }
+export async function deleteReviewByFolderId(folderId:number) {
+    await reviewRepository.deleteReviewByFolderId(folderId)
+}
