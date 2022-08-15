@@ -11,9 +11,11 @@ export async function createSubject(req: Request, res: Response) {
     res.sendStatus(201)
 }
 export async function deleteSubject(req: Request, res: Response) {
+    console.log("das");
+    
     const userId = res.locals.userId
     const subjectId = parseInt(req.params.id)
     await compareUserSubject(userId, subjectId)
-
+    await subjectServices.deleteSubjectDependencesBySubjectId(subjectId)
     res.sendStatus(204)
 }

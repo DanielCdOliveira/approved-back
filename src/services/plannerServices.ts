@@ -13,3 +13,6 @@ export async function getAllPlannersOfUser(userId : number,) {
  export async function deletePlannerByFolderId(folderId:number) {
     await plannerRepository.deletePlannerByFolderId(folderId)
 }
+export async function deletePlannerBySubjectId(subjectId:number) {
+    await plannerRepository.deletePlannerBySubjectId(subjectId)
+}

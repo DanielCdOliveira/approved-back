@@ -32,3 +32,6 @@ export async function completeTopic(topicId : number) {
 export async function deleteTopicByFolderId(folderId:number) {
     await topicRepository.deleteTopicByFolderId(folderId)
 }
+export async function deleteTopicBySubjectId(subjectId:number) {
+    await topicRepository.deleteTopicBySubjectId(subjectId)
+}

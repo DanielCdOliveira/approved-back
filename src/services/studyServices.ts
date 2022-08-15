@@ -12,3 +12,6 @@ export async function getAllStudies(userId: number, folderId: number) {
 export async function deleteStudyByFolderId(folderId:number) {
     await studyRepository.deleteStudyByFolderId(folderId)
 }
+export async function deleteStudyBySubjectId(subjectId:number) {
+    await studyRepository.deleteStudyBySubjectId(subjectId)
+}
