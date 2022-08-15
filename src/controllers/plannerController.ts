@@ -25,3 +25,9 @@ export async function getAllPlannersOfUser(req: Request, res: Response) {
     const planner = await plannerServices.getAllPlannersOfUser(userId)
     res.status(200).send(planner)
 }
+export async function deletePlanner(req: Request, res: Response) {
+    const userId = res.locals.userId
+    const plannerId = parseInt(req.params.id)
+    await plannerServices.deletePlannerByPlannerId(plannerId)
+    res.sendStatus(204)
+}

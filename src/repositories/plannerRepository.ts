@@ -57,6 +57,14 @@ export async function getAllPlannersofUserDb(userId: number) {
     })
     return planner
 }
+export async function deletePlannerByPlannerId(plannerId: number) {
+    try {
+      await prisma.planner.delete({ where: {id:plannerId } })
+    } catch (error) {
+      console.log(error);
+  
+    }
+  }
 export async function deletePlannerByFolderId(folderId: number) {
     await prisma.planner.deleteMany({ where: { folderId } })
 }

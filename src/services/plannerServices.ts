@@ -19,3 +19,6 @@ export async function deletePlannerBySubjectId(subjectId:number) {
 export async function deletePlannerByTopicId(topicId:number) {
     await plannerRepository.deletePlannerByTopicId(topicId)
 }
+export async function deletePlannerByPlannerId(plannerId:number) {
+    await plannerRepository.deletePlannerByPlannerId(plannerId)
+}
