@@ -18,4 +18,7 @@ export async function deleteStudyBySubjectId(subjectId:number) {
 export async function deleteStudyByTopicId(topicId:number) {
     await studyRepository.deleteStudyBySubjectId(topicId)
 }
+export async function deleteStudyByStudyId(studyId : number) {
+    await studyRepository.deleteStudyByStudyId(studyId)
+}
 

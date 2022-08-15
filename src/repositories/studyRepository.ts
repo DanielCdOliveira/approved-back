@@ -35,6 +35,14 @@ export async function getAllStudies(userId: number, folderId: number) {
   })
   return studies
 }
+export async function deleteStudyByStudyId(studyId: number) {
+  try {
+    await prisma.study.delete({ where: {id:studyId } })
+  } catch (error) {
+    console.log(error);
+
+  }
+}
 export async function deleteStudyByFolderId(folderId: number) {
   await prisma.study.deleteMany({ where: { folderId } })
 }

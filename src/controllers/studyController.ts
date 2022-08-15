@@ -22,3 +22,8 @@ export async function getAllStudiesFromFolder(req: Request, res: Response) {
     const historic = await studyServices.getAllStudies(userId, folderId)
     res.status(200).send(historic)
 }
+export async function deleteStudy(req: Request, res: Response) {
+    const studyId = parseInt(req.params.id)
+    await studyServices.deleteStudyByStudyId(studyId)
+    res.sendStatus(204)
+}
