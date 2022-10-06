@@ -1,32 +1,32 @@
-# <p align = "center"> Projeto Approved </p>
 
-<p align = "center">
-   <img src="https://img.shields.io/badge/author-Daniel Oliveira-4dae71?style=flat-square" />
-   <img src="https://img.shields.io/github/languages/count/DanielCdOliveira/projeto20-repoprovas?color=4dae71&style=flat-square" />
-</p>
+<div align="center"><img style = "width:100%;"src="https://i.imgur.com/BhN3Pll.png"></img></div>
+<hr>
+<h2 align=center>Approved (authoring project)</h2>
+<h3 align=center>Web development Project</h3>
+<hr>
+<h4 align=center>Have you ever gotten lost trying to organize yourself when studying?</h4>
+<h4 align=center>Approved is a study planning application</h4>
 
-# :clipboard: Descrição
+<hr>
 
-## Já ficou perdido tentando se organizar na hora dos estudos?
+## In it you can:
 
-## Approved é uma aplicação para planejamento de estudo. Nela você pode:
-
-- Agrupar matéria e tópicos por pastas;
-- Criar um planner de estudos semanal
-- Salvar os conteúdos estudados no dia
-- Marcar tópicos como concluídos
-- Agendar revisão de tópicos
+- Group material and topics by folders;
+- Create a weekly study planner
+- Save the contents studied on the day
+- Mark topics as complete
+- Schedule topic review
 
 ---
 
-## :computer: Tecnologias e Conceitos
+## :computer: Technologies and Concepts
 
 - REST APIs
 - JWTs
 - Node.js
 - TypeScript
-- Postgresql
-- Prisma
+- postgresql
+- Prism
 - Jest
 - Heroku
 
@@ -34,263 +34,263 @@
 
 ## :rocket: Deploy
 
-- [Deploy no Heroku (back-end)](https://approved-back.herokuapp.com)
-- [Deploy na Vercel (front-end)](https://approved-front.vercel.app/)
+- [Deploy on Heroku (backend)](https://approved-back.herokuapp.com)
+- [Deploy on Vercel (front-end)](https://approved-front.vercel.app/)
 
 ---
 
-## :rocket: Rotas
+## :rocket: Routes
 
-### Rotas de autenticação
+### Authentication routes
 
 ```yml
 POST /signup
-    - Rota para cadastrar um novo usuário
+    - Route to register a new user
     - headers: {}
     - body:{
         "email": "lorem@gmail.com",
-        "senha": "loremipsum",
+        "password": "loremipsum",
         "name": "loremipsum"
 }
 ```
 ```yml
 POST /sign-in
-    - Rota para fazer login
+    - Route to login
     - headers: {}
     - body: {
     "email": "lorem@gmail.com",
-    "senha": "loremipsum"
+    "password": "loremipsum"
     }
 ```
 
-### Rotas de pastas
+### Folder routes
 
 ```yml
-POST /folder (autenticada)
-    - Rota para criar pasta de estudos
+POST /folder (authenticated)
+    - Route to create study folder
     - headers: {"Authorization": "Bearer $token" }
     - body: {
-        "name": "Nome da pasta"
+        "name": "Folder name"
 }
 ```
 ```yml
-GET /folder (autenticada)
-    - Rota para listar pastas do usuário
+GET /folder (authenticated)
+    - Route to list user folders
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
 ```yml
-GET /folder/:id (autenticada)
-    - Rota para listar pasta (pelo id)
+GET /folder/:id (authenticated)
+    - Route to list folder (by id)
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
 ```yml
-DELETE /folder/:id (autenticada)
-    - Rota para deletar pasta (pelo id)
+DELETE /folder/:id (authenticated)
+    - Route to delete folder (by id)
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
 
-### Rotas de matérias
+### Material routes
 
 ```yml
-POST /subject (autenticada)
-    - Rota para criar matéria
+POST /subject (authenticated)
+    - Route to create matter
     - headers: {"Authorization": "Bearer $token" }
     - body: {
-        "name": "Nome da matéria",
-        "folderId": <id da pasta (Int)>,
+        "name": "Subject name",
+        "folderId": <folder id (Int)>,
         "isDone": boolean
 }
 ```
 ```yml
-DELETE /subject/:id (autenticada)
-    - Rota para deletar matéria (pelo id)
+DELETE /subject/:id (authenticated)
+    - Route to delete matter (by id)
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
-### Rotas de tópicos
+### Topic routes
 ```yml
-POST /topic (autenticada)
-    - Rota para criar matéria
+POST /topic (authenticated)
+    - Route to create matter
     - headers: {"Authorization": "Bearer $token" }
     - body: {
-        "name": "Nome da matéria",
-        "folderId": <id da pasta (Int)>,
-        "subjectId": <id da matéria (Int)>
+        "name": "Subject name",
+        "folderId": <folder id (Int)>,
+        "subjectId": <subject id (Int)>
         "isDone": boolean
 }
 ```
 ```yml
-POST /topic/:id (autenticada)
-    - Rota para concluir tópico
+POST /topic/:id (authenticated)
+    - Route to complete topic
     - headers: {"Authorization": "Bearer $token" }
     - body: {}
 ```
 ```yml
-DELETE /topic/:id (autenticada)
-    - Rota para deletar matéria (pelo id)
+DELETE /topic/:id (authenticated)
+    - Route to delete matter (by id)
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
 
-### Rotas de estudos
+### Study routes
 
 ```yml
-POST /study (autenticada)
-    - Rota para criar matéria
+POST /study (authenticated)
+    - Route to create matter
     - headers: {"Authorization": "Bearer $token" }
     - body: {
-        "folderId": <id da pasta (Int)>,
-        "subjectId": <id da matéria (Int)>,
-        "topicId": <id do tópico (Int)>
+        "folderId": <folder id (Int)>,
+        "subjectId": <subject id (Int)>,
+        "topicId": <topic id (Int)>
 }
 ```
 ```yml
-GET /study/:id (autenticada)
-    - Rota para lista todos estudos de uma pasta pelo seu id
+GET /study/:id (authenticated)
+    - Route to list all studies in a folder by their id
     - headers: {"Authorization": "Bearer $token" }
     - body: {}
 ```
 ```yml
-DELETE /study/:id (autenticada)
-    - Rota para deletar estudo (pelo id)
+DELETE /study/:id (authenticated)
+    - Route to delete study (by id)
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
 
-### Rotas de planners
+### Planner routes
 
 ```yml
-POST /planner (autenticada)
-    - Rota para criar planner
+POST /planner (authenticated)
+    - Route to create planner
     - headers: {"Authorization": "Bearer $token" }
     - body: {
-        "folderId": <id da pasta (Int)>,
-        "subjectId": <id da matéria (Int)>,
-        "topicId": <id do tópico (Int)>,
-        "weekDay": <dia da semana (Int, 0=domingo)>
+        "folderId": <folder id (Int)>,
+        "subjectId": <subject id (Int)>,
+        "topicId": <topic id (Int)>,
+        "weekDay": <day of the week (Int, 0=Sunday)>
 }
 ```
 ```yml
-GET /planner/:id (autenticada)
-    - Rota para lista todos planner de uma pasta pelo seu id
+GET /planner/:id (authenticated)
+    - Route to list all planner in a folder by their id
     - headers: {"Authorization": "Bearer $token" }
     - body: {}
 ```
 ```yml
-GET /planner (autenticada)
-    - Rota para lista todos planner de um usuario pelo seu token
+GET /planner (authenticated)
+    - Route to list all planner of a user by their token
     - headers: {"Authorization": "Bearer $token" }
     - body: {}
 ```
 ```yml
-DELETE /planner/:id (autenticada)
-    - Rota para deletar planners (pelo id)
+DELETE /planner/:id (authenticated)
+    - Route to delete planners (by id)
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
 
-### Rotas de revisões
+### Revision routes
 
 ```yml
-POST /review (autenticada)
-    - Rota para criar revisão
+POST /review (authenticated)
+    - Route to create review
     - headers: {"Authorization": "Bearer $token" }
     - body: {
-        "folderId": <id da pasta (Int)>,
-        "subjectId": <id da matéria (Int)>,
-        "topicId": <id do tópico (Int)>,
-        "date": <data DD/MM/YYYY>
+        "folderId": <folder id (Int)>,
+        "subjectId": <subject id (Int)>,
+        "topicId": <topic id (Int)>,
+        "date": <date DD/MM/YYYY>
 }
 ```
 ```yml
-GET /review (autenticada)
-    - Rota para lista todas revisões de um usuario pelo seu token
+GET /review (authenticated)
+    - Route to list all revisions of a user by their token
     - headers: {"Authorization": "Bearer $token" }
     - body: {}
 ```
 ```yml
-DELETE /review/:id (autenticada)
-    - Rota para deletar revisão (pelo id)
+DELETE /review/:id (authenticated)
+    - Route to delete revision (by id)
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
 
 ---
 
-## 🏁 Rodando a aplicação
+## 🏁 Running the application
 
-Certifique-se que voce tem a ultima versão estável do [Node.js](https://nodejs.org/en/download/) e [npm](https://www.npmjs.com/) rodando localmente.
+Make sure you have the latest stable version of [Node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/) running locally.
 
-Primeiro, faça o clone desse repositório na sua maquina:
+First, clone this repository on your machine:
 
 ```
 git clone https://github.com/DanielCdOliveira/approved-back.git
 ```
-ou
+or
 ```
 git clone git@github.com:DanielCdOliveira/approved-back.git
 ```
 
-## Back-end
+## Backend
 
 
 ```
 npm install
 ```
 
-Finalizado o processo, é só inicializar o servidor:
+Once the process is finished, just start the server:
 
-> Para subir a aplicação em ambiente de desenvolvimento:
+> To upload the application to the development environment:
 
 ```
 npm run dev
 ```
 
-> Para subir a aplicação de testes de integração:
+> To upload the integration testing application:
 
-- é necessario criar um arquivo **.env.test** para rodar esse comando
+- it is necessary to create a **.env.test** file to run this command
 
 ```
 npm run test
 ```
 
-> Para subir a aplicação de testes unitários:
+> To upload the unit tests application:
 
-- é necessario criar um arquivo **.env.test** para rodar esse comando
+- it is necessary to create a **.env.test** file to run this command
 
 ```
 npm run test:unit
 ```
 
-> Para subir a aplicação para testes com cypress(front-end):
+> To upload the application for testing with cypress(front-end):
 
-- é necessario criar um arquivo **.env.test** para rodar esse comando
+- it is necessary to create a **.env.test** file to run this command
 
 ```
 npm run dev:test
 ```
 
-> Para rodar a build do projeto com typescript:
+> To run the project build with typescript:
 
 ```
 npm run build
 ```
 
-> Para subir a aplicação após o build:
+> To upload the application after the build:
 
 ```
 npm run start
 ```
 
-## Front-end
+## Front end
 
 
 
-## Acesse o repositório do front-end[ aqui](https://github.com/DanielCdOliveira/approved-front)
+## Access the front-end repository[ here](https://github.com/DanielCdOliveira/approved-front)
 
 ## Thunder client
 
-- Para testes manuais é possível importar o arquivo **thunder-collection_approved.json**
+- For manual tests it is possible to import the file **thunder-collection_approved.json**
